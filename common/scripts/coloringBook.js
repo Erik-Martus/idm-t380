@@ -34,6 +34,12 @@ function openModal(e) {
 };
 
 //display hex code when picker is used
+//also cache it as an option
+var colorswatches = document.getElementsByClassName("dummy-tool");
+let i = 0;
 colorPicker.on('color:change', function(color) {
     document.getElementById('hexchange').innerHTML=(color.hexString);
+    //use the almighty modulo to cache the new color
+    colorswatches[i%10].style.backgroundColor=color.hexString;
+    i+= 1;
 });
