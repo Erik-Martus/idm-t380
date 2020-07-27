@@ -1,5 +1,28 @@
 {
   "dependencies": {
     "@jaames/iro": "^5.1.8"
-  }
+  },
+  "name": "idm-t380",
+  "description": "Summer 2020 - Workflow Optimization team project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Erik-Martus/idm-t380.git"
+  },
+  "keywords": [
+    "idm-t380"
+  ],
+  "author": "Erik Martus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Erik-Martus/idm-t380/issues"
+  },
+  "homepage": "https://github.com/Erik-Martus/idm-t380#readme"
 }
