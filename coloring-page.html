@@ -6,7 +6,7 @@
 	
 	<title>Page | Coloring Book</title>
 
-	<script src="https://kit.fontawesome.com/080c06f1d6.js" crossorigin="anonymous"></script>
+	<!-- <script src="https://kit.fontawesome.com/080c06f1d6.js" crossorigin="anonymous"></script> -->
 	<link rel="stylesheet" type="text/css" href="common/css/main.css" />
 	<script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 </head>
@@ -19,55 +19,58 @@
 	</header>
 	<main>
 		<div class="content">
-			<!-- <div id="back">
-				<a class="button back-link" href="/">&ltrif; Back</a>
-			</div> -->
-
 			<button onclick="goBack()" class="button back-link"><i class="fas fa-chevron-left"></i>  Back</button>
-
+			
 			<script>
+			// Back Button
 			function goBack() {
-			  window.history.back();
-			}
+    			window.history.back();
+			}	
 			</script>
 
 			<div id="work-area">
-				<img src="https://via.placeholder.com/300x500" alt="placeholder">
+				<!-- <img src="https://via.placeholder.com/300x500" alt="placeholder"> -->
+				<svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 512 512" height="512" viewbox="0 0 512 512" width="512">
+					<g onclick="clickEvent(evt)">
+						<path class="cls-1" d="m406 210c0-16.719-6.892-32.333-18.856-43.557 2.561-10.49 3.856-21.026 3.856-31.443 0-74.439-60.561-135-135-135s-135 60.561-135 135c0 10.65 1.236 21.185 3.683 31.439-11.856 11.18-18.683 26.792-18.683 43.561 0 29.398 21.259 53.908 49.206 59.009l86.735 233.22c2.184 5.874 7.791 9.771 14.059 9.771s11.875-3.897 14.059-9.771l86.735-233.22c27.948-5.101 49.206-29.611 49.206-59.009zm-219.731 56.469c9.619-3.463 18.097-9.321 24.731-16.846 11.003 12.481 27.092 20.377 45 20.377s33.997-7.896 45-20.377c4.03 4.571 8.733 8.535 13.968 11.711l-99.708 83.09zm69.731 187.499-29.652-79.732 85.938-71.615zm90-213.968c-16.542 0-30-13.458-30-30 0-8.284-6.716-15-15-15s-15 6.716-15 15c0 16.542-13.458 30-30 30s-30-13.458-30-30c0-8.284-6.716-15-15-15s-15 6.716-15 15c0 16.542-13.458 30-30 30s-30-13.458-30-30c0-10.347 5.176-19.8 13.846-25.286 5.789-3.663 8.36-10.783 6.248-17.301-3.38-10.427-5.094-21.333-5.094-32.413 0-57.897 47.103-105 105-105s105 47.103 105 105c0 10.661-1.782 21.567-5.299 32.413-2.112 6.517.459 13.637 6.248 17.3 8.798 5.568 14.051 15.021 14.051 25.287 0 16.542-13.458 30-30 30z"/>
+					</g>
+				</svg>
 			</div>
+			
 
 			<div id="controls">
 				<div id="color-bar" class="control-bar">
-					<div class="formGroup">
+				
+				<svg width="344" height="60" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 170.08 170.08">
 
-						<div class="radio-colors radio-colors-orange">
-						<input class="form-input-check" type="radio" id="orange" name="swatch2">
-						<label for="orange"><span></span></label>
-						</div>
-							  
-						<div class="radio-colors radio-colors-red">
-						<input class="form-input-check" type="radio" id="red" name="swatch2">
-						<label for="red"><span></span></label>
-						</div>
-						
-						<div class="radio-colors radio-colors-yellow">
-						<input class="form-input-check" type="radio" id="yellow" name="swatch2">
-						<label for="yellow"><span></span></label>
-						</div>
-							  
-						<div class="radio-colors radio-colors-blue">
-						<input class="form-input-check" type="radio" id="blue" name="swatch2">
-						<label for="blue"><span></span></label>
-						</div>
-							  
-						<div class="radio-colors radio-colors-green">
-						<input class="form-input-check" type="radio" id="green" name="swatch2">
-						<label for="green"><span></span></label>
-						</div>
-						  
-						<img src="https://image.flaticon.com/icons/svg/3124/3124925.svg" alt="hex" class="hex-picker" name="swatch2">
-							  
-					</div>
+				<g id="color-select" onclick="setColor(evt)">
+				<circle cx="-225" cy="56" r="50" fill="#DF7139" stroke="#DF7139"></circle>
+				<circle cx="-75" cy="56" r="50" fill="#DD3D48" stroke="#DD3D48"></circle>
+				<circle cx="75" cy="56" r="50" fill="#F3C252" stroke="#F3C252"></circle>
+				<circle id="blue" cx="225" cy="56" r="50" fill="#6291EE" stroke="#6291EE"></circle>
+				<circle cx="375" cy="56" r="50" fill="#B2D86C" stroke="#B2D86C"></circle>
+				</g>
+				</svg>	
+				<img src="https://image.flaticon.com/icons/svg/3124/3124925.svg" alt="hex" class="hex-picker">
 			</div>
+
+			<script>
+				// Coloring Selections
+				var currentColor = "#6291EE";
+				var currentColorItem = document.getElementById('blue');
+
+				function clickEvent(evt) {
+				    evt.target.setAttribute('fill', currentColor)
+				}
+
+				function setColor(evt) {
+					currentColorItem.setAttribute('stroke', '#fff')
+				    currentColorItem = evt.target;
+				    currentColor = currentColorItem.getAttribute('fill');
+				    currentColorItem.setAttribute('stroke', '#000')
+				}
+			</script>
+
 				<div id="tool-bar" class="control-bar">
 					<div class="toolItem">
 						<img src="./icons/pencil.svg" alt="" class="toolIcon">

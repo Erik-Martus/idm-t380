@@ -126,6 +126,7 @@ a:hover, a:focus {
     display: flex;
     justify-content: center;
     margin: 1rem auto;
+    background-color: #fff;
 }
 
 /* Elements */
@@ -307,104 +308,18 @@ svg.IroWheel, svg.IroSlider, #selected-color-shower {
     }
 }
 
-/* ------ Color Picker Presets ------ */
-#controls .radio-colors {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 40;
-}
-.form-input-check + label span {
-    display: inline-block;
-    width: 42px;
-    height: 42px;
-    margin: 0 4px 0 0;
-    vertical-align: middle;
-    background: #fff;
-    border: 1px solid #222;
-    cursor: pointer;
-    position: relative;
-}
-.form-input-check:checked + label span {
-    background: #222;
-}
-.radio-colors {
-    margin-bottom: 0 !important;
-}
-.radio-colors label {
-    margin-bottom: 0;
-    color: gray;
-}
-.form-input-check {
-    display: none;
-}
-.radio-colors .form-input-check + label span {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    margin: 4px;
-    background: red;
-    border: none;
-    top: -6px;
-}
-.radio-colors .form-input-check:checked + label span {
-    background: red;
-    border: 2px solid white;
-    box-shadow: 0 0 0 2px red;
-}
-
-/* ORANGE */
-.radio-colors.radio-colors-orange .form-input-check + label span {
-    background: #DF7139;
-}
-.radio-colors.radio-colors-orange .form-input-check:checked + label span {
-    background: #DF7139;
-    box-shadow: 0 0 0 3px #DF7139;
-}
-
-/* RED */
-.radio-colors.radio-colors-red .form-input-check + label span {
-    background: #DD3D48;
-}
-.radio-colors.radio-colors-red .form-input-check:checked + label span {
-    background: #DD3D48;
-    box-shadow: 0 0 0 3px #DD3D48;
-}
-
-/* YELLOW */
-.radio-colors.radio-colors-yellow .form-input-check + label span {
-    background: #F3C252;
-}
-.radio-colors.radio-colors-yellow .form-input-check:checked + label span {
-    background: #F3C252;
-    box-shadow: 0 0 0 3px #F3C252;
-}
-
-/* BLUE */
-.radio-colors.radio-colors-blue .form-input-check + label span {
-    background: #6291EE;
-}
-.radio-colors.radio-colors-blue .form-input-check:checked + label span {
-    background: #6291EE;
-    box-shadow: 0 0 0 3px #6291EE;
-}
-
-/* GREEN */
-.radio-colors.radio-colors-green .form-input-check + label span {
-    background: #B2D86C;
-}
-.radio-colors.radio-colors-green .form-input-check:checked + label span {
-    background: #B2D86C;
-    box-shadow: 0 0 0 3px #B2D86C;
-}
-
 /* HEX */
 .hex-picker {
     display: inline-block;
-    width: 42x;
+    width: 42px;
     height: 42px;
     margin: 6px;
     vertical-align: middle;
     cursor: pointer;
     position: relative;
     top: -6px;
+}
+
+circle {
+    stroke-width: 0.5em;
 }
