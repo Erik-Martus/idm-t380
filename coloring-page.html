@@ -6,7 +6,7 @@
 	
 	<title>Page | Coloring Book</title>
 
-	<!-- <script src="https://kit.fontawesome.com/080c06f1d6.js" crossorigin="anonymous"></script> -->
+	<script src="https://kit.fontawesome.com/080c06f1d6.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="common/css/main.css" />
 	<script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 </head>
@@ -19,12 +19,15 @@
 	</header>
 	<main>
 		<div class="content">
-			<button onclick="goBack()" class="button back-link"><i class="fas fa-chevron-left"></i>  Back</button>
+			<button onclick="confirmAction()" class="button back-link"><i class="fas fa-chevron-left"></i>  Back</button>
 			
 			<script>
 			// Back Button
-			function goBack() {
-    			window.history.back();
+			function confirmAction() {
+				var txt;
+				if (confirm("Are you sure you want to go back? All changes will be lost!")) {
+    				window.history.back();
+				}
 			}	
 			</script>
 
