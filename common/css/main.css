@@ -198,17 +198,43 @@ button, .button {
     }
 
         /* To be removed once icons are implemented */
-        #controls .control-bar .dummy-tool {
+        #controls .control-bar .swatch {
+            display: inline-block;
             width: 40px;
             height: 40px;
-            background: #000;
             border-radius: 50%;
+            cursor: pointer;
         }
+
+            #controls .control-bar .swatch.active {
+                border: 2px solid #000;
+            }
+
+            #swatch-01 {
+                background: #DF7139;
+            }
+
+            #swatch-02 {
+                background: #DD3D48;
+            }
+
+            #swatch-03 {
+                background: #F3C252;
+            }
+
+            #swatch-04 {
+                background: #6291EE;
+            }
+
+            #swatch-05 {
+                background: #B2D86C;
+            }
 
         .toolIcon {
             width: 40px;
             height: 40px;
             margin: 0 auto;
+            cursor: pointer;
         }
 
 /* Modal styles */

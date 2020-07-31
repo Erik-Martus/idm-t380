@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@jaames/iro": "^5.1.8",
+    "jquery": "^3.5.1",
     "normalize.css": "^8.0.1",
     "picturefill": "^3.0.3",
     "potrace": "^2.1.6"

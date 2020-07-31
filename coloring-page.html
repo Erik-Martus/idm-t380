@@ -40,36 +40,39 @@
 
 			<div id="controls">
 				<div id="color-bar" class="control-bar">
-				
-				<svg width="344" height="60" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 170.08 170.08">
+					<!-- <svg width="344" height="60" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 170.08 170.08">
+						<g id="color-select" onclick="setColor(evt)">
+							<circle class="swatch" cx="-225" cy="56" r="50" fill="#DF7139" stroke="#DF7139"></circle>
+							<circle class="swatch" cx="-75" cy="56" r="50" fill="#DD3D48" stroke="#DD3D48"></circle>
+							<circle class="swatch" cx="75" cy="56" r="50" fill="#F3C252" stroke="#F3C252"></circle>
+							<circle class="swatch" id="blue" cx="225" cy="56" r="50" fill="#6291EE" stroke="#6291EE"></circle>
+							<circle class="swatch" cx="375" cy="56" r="50" fill="#B2D86C" stroke="#B2D86C"></circle>
+						</g>
+					</svg>	 -->
+					<div id="swatch-01" class="swatch" onclick="setColor(this)"></div>
+					<div id="swatch-02" class="swatch" onclick="setColor(this)"></div>
+					<div id="swatch-03" class="swatch" onclick="setColor(this)"></div>
+					<div id="swatch-04" class="swatch" onclick="setColor(this)"></div>
+					<div id="swatch-05" class="swatch" onclick="setColor(this)"></div>
+					<img src="https://image.flaticon.com/icons/svg/3124/3124925.svg" id="color-picker" alt="hex" class="hex-picker">
+				</div>
 
-				<g id="color-select" onclick="setColor(evt)">
-				<circle cx="-225" cy="56" r="50" fill="#DF7139" stroke="#DF7139"></circle>
-				<circle cx="-75" cy="56" r="50" fill="#DD3D48" stroke="#DD3D48"></circle>
-				<circle cx="75" cy="56" r="50" fill="#F3C252" stroke="#F3C252"></circle>
-				<circle id="blue" cx="225" cy="56" r="50" fill="#6291EE" stroke="#6291EE"></circle>
-				<circle cx="375" cy="56" r="50" fill="#B2D86C" stroke="#B2D86C"></circle>
-				</g>
-				</svg>	
-				<img src="https://image.flaticon.com/icons/svg/3124/3124925.svg" alt="hex" class="hex-picker">
-			</div>
+				<!-- <script>
+					// Coloring Selections
+					var currentColor = "#6291EE";
+					var currentColorItem = document.getElementById('blue');
 
-			<script>
-				// Coloring Selections
-				var currentColor = "#6291EE";
-				var currentColorItem = document.getElementById('blue');
+					function clickEvent(evt) {
+						evt.target.setAttribute('fill', currentColor)
+					}
 
-				function clickEvent(evt) {
-				    evt.target.setAttribute('fill', currentColor)
-				}
-
-				function setColor(evt) {
-					currentColorItem.setAttribute('stroke', '#fff')
-				    currentColorItem = evt.target;
-				    currentColor = currentColorItem.getAttribute('fill');
-				    currentColorItem.setAttribute('stroke', '#000')
-				}
-			</script>
+					function setColor(evt) {
+						currentColorItem.setAttribute('stroke', '#fff')
+						currentColorItem = evt.target;
+						currentColor = currentColorItem.getAttribute('fill');
+						currentColorItem.setAttribute('stroke', '#000')
+					}
+				</script> -->
 
 				<div id="tool-bar" class="control-bar">
 					<div class="toolItem">
@@ -91,6 +94,7 @@
 			</div>
 		</div>
 	</main>
+
 	<div id="color-picker_modal" class="modal">
 		<div class="modal-content">
 		    <h2>Select a Color</h2>
@@ -99,6 +103,6 @@
 			<div id="selected-color-shower"><h3 id="hexchange">#FFFFFF</h3></div>
 		</div>
 	</div>
-	<script src="common/scripts/coloringBook.js"></script>
+	<script src="common/scripts/index.js"></script>
 </body>
 </html>
