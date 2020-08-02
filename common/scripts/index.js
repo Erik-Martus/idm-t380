@@ -1,17 +1,15 @@
-//for now still not using the node package
-//const iro = require('@jaames/iro');
-const picker_tool = document.getElementById('color-picker');
-
-picker_tool.addEventListener('mousedown', function() {
-    openModal(this.id);
-});
-
 //initialize color picker with iro
 var colorPicker = new iro.ColorPicker("#picker", {
   // Set the size of the color picker wheel. can only be modified in js in px
   width: 200,
-  // Set the initial color to pure red
+  // Set the initial color to pure white
   color: "#fff"
+});
+
+//open modal
+const picker_tool = document.getElementById('color-picker');
+picker_tool.addEventListener('mousedown', function() {
+    openModal(this.id);
 });
 
 // Function displays selected modal. Accepts paramater of the clicked element's ID.
@@ -33,6 +31,14 @@ function openModal(e) {
     }
 };
 
+//initialize undo button
+const undoBtn = document.getElementById('undoButton');
+undoBtn.addEventListener('click', undoColor);
+
+//container for previous actions for undo
+const theStack = [];
+
+//convert rgb to hex
 function RGBToHex(rgb) {
     // Choose correct separator
     let sep = rgb.indexOf(",") > -1 ? "," : " ";
@@ -56,28 +62,53 @@ function RGBToHex(rgb) {
 //display hex code when picker is used
 //also cache it as an option
 var colorswatches = document.getElementsByClassName("swatch");
-let i = 0;
+let customcolori = 0;
 colorPicker.on('color:change', function(color) {
-    document.getElementById('hexchange').innerHTML=(color.hexString);
+    window.newColor = document.getElementById('hexchange').innerHTML=(color.hexString);
     //use the almighty modulo to cache the new color
-    colorswatches[i%5].style.background=color.hexString;
-    i+= 1;
+    colorswatches[customcolori%5].style.background=color.hexString;
+    customcolori+= 1;
 });
 
+
+//recolor SVG
+//also add previous item/color combo to stack for undo function
 function clickEvent(evt) {
-    evt.target.setAttribute('fill', currentColor)
+    window.prevItem = evt.target;
+    window.prevColor=(evt.target.getAttribute('fill'));
+    theStack.push([window.prevItem, window.prevColor]);
+    //below is what changes the color
+    evt.target.setAttribute('fill', currentColor);
 }
 
+//set new color to pencil in
 function setColor(evt) {
     // Remove active class from all swatches
-
     currentColorItem = evt;
     currentColor = getComputedStyle(evt).background;
     currentColor = RGBToHex(currentColor);
-    console.log(currentColor);
+    //console.log(currentColor);
     currentColorItem.classList.add('active');
 };
 
+//undo previous color change to svg
+function undoColor(){
+    if (theStack.length>0){
+        let theObject = theStack[theStack.length-1][0];
+        let theColor = theStack[theStack.length-1][1];
+        if(theColor == null){
+            theColor = checkDefault(theObject);
+        }
+        theObject.setAttribute('fill', theColor);
+        theStack.pop();
+    }
+}
 
-
-
+function checkDefault(theItem){
+    if(theItem.classList.contains('defaultBlack')){
+        return '#000000';
+    }
+    else {
+        return '#FFFFFF';
+    }
+}
