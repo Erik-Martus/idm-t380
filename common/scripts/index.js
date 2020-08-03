@@ -65,7 +65,11 @@ colorPicker.on('color:change', function(color) {
 });
 
 function clickEvent(evt) {
-    evt.target.setAttribute('fill', currentColor)
+    console.log(evt.target);
+    const target = evt.target;
+    if (target.classList.contains('paintable')) {
+      evt.target.setAttribute('fill', currentColor);
+    }
 }
 
 function setColor(evt) {
