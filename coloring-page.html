@@ -782,7 +782,7 @@
 					<div class="toolItem">
 						<img src="./icons/eraser.svg" alt="" class="toolIcon">
 					</div>
-					<div class="toolItem">
+					<div class="toolItem" id='undoButton'>
 						<img src="./icons/undo.svg" alt="" class="toolIcon">
 					</div>
 					<div class="toolItem">
@@ -801,7 +801,8 @@
 		    <h2>Select a Color</h2>
 			<button class="btn close">Close</button>
 			<div id="picker"></div>
-			<div id="selected-color-shower"><h3 id="hexchange">#FFFFFF</h3></div>
+			<div id="selected-color-shower" class="modal-button"><h3 id="hexchange">#FFFFFF</h3></div>
+			<div id="confirm" class="modal-button"><h3>Pick this color</h3></div>
 		</div>
 	</div>
 	<script src="common/scripts/index.js"></script>
