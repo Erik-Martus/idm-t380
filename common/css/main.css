@@ -145,6 +145,12 @@ a:hover, a:focus {
     max-height: 80vh;
 }
 
+.accessibility-button {
+    position: fixed;
+    left: 3rem;
+    margin-top: 24px;
+}
+
 .gallery-button {
     display: flex;
     position: absolute;
