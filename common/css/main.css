@@ -37,8 +37,15 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--font-body);
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
+}
+
+.accessibility-mode {
+    background-color: gray;
+}
+
+.accessibility-mode-off {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	animation: gradient 15s ease infinite;
 }
 
@@ -77,7 +84,7 @@ h1 {
 
 h2 {
     text-align: center;
-    color: #494949;
+    color: #ffffff;
 }
 
 a:link, a:visited {

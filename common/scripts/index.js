@@ -126,15 +126,15 @@ function confirmAction() {
 }	
 
 // Toggle background color
-var button = document.querySelector("button");
-var isColored = false;
+function changeBackground() {
+    var element = document.body;
+    var isColored = false;
 
-button.addEventListener("click", function(){
-if(isColored){
-document.body.style.background = "";
-isColored = false;
-} else{
-document.body.style.background = "gray";
-isColored = true;
+    if (isColored) {
+        isColored = false;
+    } else {
+        element.classList.toggle("accessibility-mode")
+        element.classList.toggle("accessibility-mode-off")
+        isColored = true;
+    }
 }
-}); 
