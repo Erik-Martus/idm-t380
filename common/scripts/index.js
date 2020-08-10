@@ -116,3 +116,11 @@ function checkDefault(theItem){
         return '#FFFFFF';
     }
 }
+
+// Back Button
+function confirmAction() {
+	var txt;
+	if (confirm("Are you sure you want to go back? All changes will be lost!")) {
+		window.history.back();
+	}
+}	
