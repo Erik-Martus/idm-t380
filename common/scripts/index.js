@@ -116,3 +116,25 @@ function checkDefault(theItem){
         return '#FFFFFF';
     }
 }
+
+// Back Button
+function confirmAction() {
+	var txt;
+	if (confirm("Are you sure you want to go back? All changes will be lost!")) {
+		window.history.back();
+	}
+}	
+
+// Toggle background color
+function changeBackground() {
+    var element = document.body;
+    var isColored = false;
+
+    if (isColored) {
+        isColored = false;
+    } else {
+        element.classList.toggle("accessibility-mode")
+        element.classList.toggle("accessibility-mode-off")
+        isColored = true;
+    }
+}

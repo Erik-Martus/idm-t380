@@ -11,32 +11,25 @@
 	<script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 </head>
 
-<body>
+<body id="top" class="accessibility-mode-off">
 	<header>
-		<div class="content">
+		<div class="content__header">
+			<button class="accessibility-button" onclick="changeBackground()"><i class="fas fa-universal-access"></i></button>
 			<h1>Coloring Book</h1>
+			<div class="gallery-button" onclick="confirmAction()"><h2 class="gallery-text">gallery view</h2><img src="./icons/gallery.svg" alt=""></div>
 		</div>
 	</header>
 	<main>
-		<div class="content">
-			<button onclick="confirmAction()" class="button back-link"><i class="fas fa-chevron-left"></i>  Back</button>
-			
-			<script>
-			// Back Button
-			function confirmAction() {
-				var txt;
-				if (confirm("Are you sure you want to go back? All changes will be lost!")) {
-    				window.history.back();
-				}
-			}	
-			</script>
+		<div class="content__page">
+			<!-- <button onclick="confirmAction()" class="button back-link"><i class="fas fa-chevron-left"></i>  Back</button> -->
 
 			<div id="work-area">
+				<h2>Art by: Lorem ipsum</h2>
 				<!-- <img src="https://via.placeholder.com/300x500" alt="placeholder"> -->
 				<?xml version="1.0" encoding="utf-8"?>
 				<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 				<svg version="1.1" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					viewBox="0 0 2293 2053" style="enable-background:new 0 0 2293 2053;" xml:space="preserve" width="2053px">
+					viewBox="0 0 2293 2053" style="enable-background:new 0 0 2293 2053;" xml:space="preserve" width="2053px"> <!--2053px-->
 					<g onclick="clickEvent(evt)">
 					<path class="paintable" fill="#ffffff" d="M661.7,1861.3c-2.4-1.1-2.5-1.1-3.1,5.6c-0.3,3.7-0.6,8.2-0.6,10.2c0.1,3.3,0.2,3,2.6-3c1.4-3.6,2.7-7.6,3-9
 						C664.1,1862.9,663.7,1862.2,661.7,1861.3z"/>
@@ -782,11 +775,11 @@
 					<div class="toolItem">
 						<img src="./icons/eraser.svg" alt="" class="toolIcon">
 					</div>
-					<div class="toolItem" id='undoButton'>
+					<div class="toolItem" id='undoButton' onclick="eraserColor()">
 						<img src="./icons/undo.svg" alt="" class="toolIcon">
 					</div>
 					<div class="toolItem">
-						<img src="./icons/reset.svg" alt="" class="toolIcon">
+						<img src="./icons/redo.svg" alt="" class="toolIcon">
 					</div>
 					<div class="toolItem">
 						<img src="./icons/share.svg" alt="" class="toolIcon">
