@@ -124,3 +124,17 @@ function confirmAction() {
 		window.history.back();
 	}
 }	
+
+// Toggle background color
+var button = document.querySelector("button");
+var isColored = false;
+
+button.addEventListener("click", function(){
+if(isColored){
+document.body.style.background = "";
+isColored = false;
+} else{
+document.body.style.background = "gray";
+isColored = true;
+}
+}); 
