@@ -40,8 +40,8 @@ const undoBtn = document.getElementById('undoButton');
 undoBtn.addEventListener('click', undoColor);
 
 //initialize redo button
-const redoBtn = document.getElementById('redoButton');
-redoBtn.addEventListener('click', redoColor);
+// const redoBtn = document.getElementById('redoButton');
+// redoBtn.addEventListener('click', redoColor);
 
 //confirmation button for color picker
 const confirm = document.getElementById('confirm');
@@ -88,13 +88,6 @@ function cachecolor() {
 //recolor SVG
 //also add previous item/color combo to stack for undo function
 function clickEvent(evt) {
-<<<<<<< Updated upstream
-    window.prevItem = evt.target;
-    window.prevColor=(evt.target.getAttribute('fill'));
-    theStack.push([window.prevItem, window.prevColor]);
-    //below is what changes the color
-    evt.target.setAttribute('fill', currentColor);
-=======
     const target = evt.target;
     if (target.classList.contains('paintable')) {
       window.prevItem = evt.target;
@@ -103,7 +96,6 @@ function clickEvent(evt) {
       //below is what changes the color
       evt.target.setAttribute('fill', currentColor);
     }
->>>>>>> Stashed changes
 }
 
 //set new color to pencil in
@@ -130,18 +122,17 @@ function undoColor(){
     }
 }
 
-function redoColor(){
-    console.log('hi')
-    if (redoStack.length>0){
-        let theObject = redoStack[redoStack.length-1][0];
-        let theColor = redoStack[redoStack.length-1][1];
-        if(theColor == null){
-            theColor = checkDefault(theObject);
-        }
-        theObject.setAttribute('fill', theColor);
-        theStack.push(redoStack.pop());
-    }
-}
+// function redoColor(){
+//     if (redoStack.length>0){
+//         let theObject = redoStack[redoStack.length-1][0];
+//         let theColor = redoStack[redoStack.length-1][1];
+//         if(theColor == null){
+//             theColor = checkDefault(theObject);
+//         }
+//         theObject.setAttribute('fill', theColor);
+//         theStack.push(redoStack.pop());
+//     }
+// }
 
 function checkDefault(theItem){
     if(theItem.classList.contains('defaultBlack')){
