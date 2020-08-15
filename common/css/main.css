@@ -362,11 +362,30 @@ div.modal-button {
 
 #confirm {
     background-color: #666A86;
+    cursor: grab;
+}
+
+#confirm:hover {
+    background-color: #788AA3;
+}
+
+#confirm:active {
+    background-color: #75C9C8;
 }
 
 /*color picker modal specific styles*/
 #color-picker_modal h2{
     margin: 2.5rem auto 0;
+}
+
+#hexchange {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    letter-spacing: 2px;
+}
+
+#selected-color-shower {
+    border: 1px solid grey;
 }
 
 /* ------ Tablet Styles ------ */
