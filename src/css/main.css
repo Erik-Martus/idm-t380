@@ -43,8 +43,15 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--font-body);
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
+}
+
+.accessibility-mode {
+    background-color: gray;
+}
+
+.accessibility-mode-off {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	animation: gradient 15s ease infinite;
 }
 
@@ -62,11 +69,13 @@ body {
 
 header {
     background: #fff;
+    /* margin-bottom: 1em; */
     padding: .5em 0;
     margin-bottom: 1em;
     /* position: sticky; */
     /* top: 0; */
     width: 100%;
+    height: auto;
 }
 
 main {
@@ -103,14 +112,26 @@ a:hover, a:focus {
 /* Layout */
 
 .content {
+    /* max-width: 50%; */
     max-width: 1200px;
     margin: auto;
+}
+
+.content__page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.content__header {
+    display: flex;
+    justify-content: center;
 }
 
 #select-grid {
     display: grid;
     justify-items: center;
-    grid-gap: 2.5rem;
+    grid-gap: 1.5rem;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
@@ -119,6 +140,7 @@ a:hover, a:focus {
         position: relative;
         background: #ffffff;
         width: 100%;
+        max-width: 16rem;
         border-radius: .5rem;
         padding: .5rem;
         color: #000 !important;
@@ -157,10 +179,44 @@ a:hover, a:focus {
         }
 
 #work-area {
+    width: 95%;
+    margin: 0 auto;
+    padding: 1em 0;
+}
+
+#work-area svg {
+    max-width: 100%;
+    max-height: 80vh;
+}
+
+.accessibility-button {
+    position: absolute;
+    left: 3rem;
+    margin-top: 24px;
+}
+
+.gallery-button {
     display: flex;
-    justify-content: center;
-    margin: 1rem auto;
-    background-color: #fff;
+    position: absolute;
+    align-items: center;
+    padding-top: 24px;
+    right: 3em;
+    top: 0;
+    cursor: pointer;
+}
+
+.gallery-button:hover {
+    filter: invert(.5) sepia(1) saturate(5) hue-rotate(-200deg);
+}
+
+.gallery-button img {
+    width: 44px;
+}
+
+.gallery-text {
+    color: black;
+    padding-right: .5rem;
+    margin: 0;
 }
 
 /* Elements */
@@ -190,6 +246,9 @@ button, .button {
 
     .button.back-link {
         background: #FF5D73;
+        align-self: center;
+        position: absolute;
+        left: 3em;
     }
 
         .button.back-link:hover,
@@ -216,10 +275,11 @@ button, .button {
         }
 
 #controls {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column-reverse;
+    align-self: center;
+    justify-content: flex-start;
+    padding: 0 3em;
 }
 
     #controls .control-bar {
@@ -357,6 +417,15 @@ div.modal-button {
 
 #confirm {
     background-color: #666A86;
+    cursor: grab;
+}
+
+#confirm:hover {
+    background-color: #788AA3;
+}
+
+#confirm:active {
+    background-color: #75C9C8;
 }
 
 /*color picker modal specific styles*/
@@ -364,15 +433,34 @@ div.modal-button {
     margin: 2.5rem auto 0;
 }
 
+#hexchange {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    letter-spacing: 2px;
+}
 
+#selected-color-shower {
+    border: 1px solid grey;
+}
 
 /* ------ Tablet Styles ------ */
 /* min-width: 768px */
 @media screen and (min-width: 48rem) {
-    /* General */
+    /* Layout */
 
+    #select-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* General */
     h1 {
         font-size: 3rem;
+    }
+}
+/* max-width: 768px */
+@media screen and (max-width: 48rem) {
+    .gallery-text {
+        display: none;
     }
 }
 
@@ -380,6 +468,22 @@ div.modal-button {
 /* min-width: 1024px */
 @media screen and (min-width: 64rem) {
     /* General */
+    #controls {
+        align-items: flex-end;
+    }
+
+    /* Layout */
+
+    #select-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* max-width: 1024px */
+@media screen and (max-width: 64rem) {
+    .content__page {
+        flex-direction: column;
+    }
 }
 
 /* HEX */
