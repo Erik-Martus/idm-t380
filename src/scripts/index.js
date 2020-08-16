@@ -1,3 +1,5 @@
+const { color } = require("jimp");
+
 //initialize color picker with iro
 var colorPicker = new iro.ColorPicker("#picker", {
   // Set the size of the color picker wheel. can only be modified in js in px
@@ -88,10 +90,11 @@ function cachecolor() {
 //recolor SVG
 //also add previous item/color combo to stack for undo function
 function clickEvent(evt) {
+    console.log(evt)
     const target = evt.target;
     if (target.classList.contains('paintable')) {
       window.prevItem = evt.target;
-      window.prevColor=(evt.target.getAttribute('fill'));
+      window.prevColor = (evt.target.getAttribute('fill'));
       theStack.push([window.prevItem, window.prevColor]);
       //below is what changes the color
       evt.target.setAttribute('fill', currentColor);
@@ -100,13 +103,29 @@ function clickEvent(evt) {
 
 //set new color to pencil in
 function setColor(evt) {
-    // Remove active class from all swatches
+    console.log(evt);
     currentColorItem = evt;
     currentColor = getComputedStyle(evt).background;
     currentColor = RGBToHex(currentColor);
-    //console.log(currentColor);
-    currentColorItem.classList.add('active');
+    var colorswatches = document.querySelectorAll('.swatch');
+    console.log(colorswatches);
+    colorswatches.forEach(swatch => {
+        swatch.classList.remove('active');
+    });
+    window.setTimeout(() => {
+        currentColorItem.classList.add('active');
+    }, 100);
+    console.log(currentColor);
 };
+
+//set eraser tool functionality
+const eraser = document.getElementById('eraserTool');
+eraser.addEventListener('click', function() {
+    if (eraser.classList.contains('active')) {
+        console.log('eraser tool is active')
+
+    }
+})
 
 //undo previous color change to svg
 function undoColor(){
