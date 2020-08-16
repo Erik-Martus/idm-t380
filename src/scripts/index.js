@@ -1,5 +1,3 @@
-const { color } = require("jimp");
-
 //initialize color picker with iro
 var colorPicker = new iro.ColorPicker("#picker", {
   // Set the size of the color picker wheel. can only be modified in js in px
@@ -97,33 +95,50 @@ function clickEvent(evt) {
       window.prevColor = (evt.target.getAttribute('fill'));
       theStack.push([window.prevItem, window.prevColor]);
       //below is what changes the color
+      if (pencil.classList.contains('active')) {
+          console.log('Using pencil tool');
+          currentColor = selectedColor;
+      } else if (eraser.classList.contains('active')) {
+          currentColor = '#ffffff';
+      }
       evt.target.setAttribute('fill', currentColor);
     }
 }
 
+//initialize coloring tools
+const pencil = document.getElementById('pencilTool');
+const eraser = document.getElementById('eraserTool');
+
 //set new color to pencil in
 function setColor(evt) {
     console.log(evt);
-    currentColorItem = evt;
-    currentColor = getComputedStyle(evt).background;
-    currentColor = RGBToHex(currentColor);
+    selectedColorItem = evt;
+    selectedColor = getComputedStyle(evt).background;
+    selectedColor = RGBToHex(selectedColor);
     var colorswatches = document.querySelectorAll('.swatch');
     console.log(colorswatches);
     colorswatches.forEach(swatch => {
         swatch.classList.remove('active');
     });
     window.setTimeout(() => {
-        currentColorItem.classList.add('active');
+        selectedColorItem.classList.add('active');
     }, 100);
-    console.log(currentColor);
+    console.log(selectedColor);
 };
 
-//set eraser tool functionality
-const eraser = document.getElementById('eraserTool');
-eraser.addEventListener('click', function() {
+//set pencil tool functionality
+pencil.addEventListener('click', function() {
     if (eraser.classList.contains('active')) {
-        console.log('eraser tool is active')
+        eraser.classList.remove('active');
+        pencil.classList.add('active');
+    }
+})
 
+//set eraser tool functionality
+eraser.addEventListener('click', function() {
+    if (pencil.classList.contains('active')) {
+        pencil.classList.remove('active');
+        eraser.classList.add('active');
     }
 })
 
