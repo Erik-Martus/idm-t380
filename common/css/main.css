@@ -17,8 +17,14 @@
     --font-body: 'Roboto', Helvetica, Arial, sans-serif;
 
     /* Color Variables */
+    --color-light_gray: #a3a3a3;
+    --color-dark_purple: #3C153B;
 
-    /* Sizing Variables */
+    /* Layout Variables */
+    --box-shadow: 0px 5px 8px 5px rgba(0,0,0,0.2);
+    --transform-mv_up: translateY(-0.25rem);
+    --transition-box: transform .1s ease-in, box-shadow .1s ease-in;
+    --transition-btn: box-shadow .1s ease-in, background .1s ease-in, color .1s ease-in;
 }
 
 *, *::after, *::before {
@@ -63,12 +69,17 @@ body {
 
 header {
     background: #fff;
-    padding: .1em 0;
     /* margin-bottom: 1em; */
-    position: sticky;
+    padding: .5em 0;
+    margin-bottom: 1em;
+    /* position: sticky; */
     /* top: 0; */
     width: 100%;
     height: auto;
+}
+
+main {
+    padding-bottom: 7rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -102,8 +113,8 @@ a:hover, a:focus {
 
 .content {
     /* max-width: 50%; */
+    max-width: 1200px;
     margin: auto;
-    padding: 0 1rem;
 }
 
 .content__page {
@@ -120,25 +131,51 @@ a:hover, a:focus {
 #select-grid {
     display: grid;
     justify-items: center;
-    grid-gap: 2.5rem;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
-    #select-grid .select-item {
-        background: #b4b4b4;
+    .select-item {
+        display: block;
+        position: relative;
+        background: #ffffff;
+        width: 100%;
+        max-width: 16rem;
+        border-radius: .5rem;
+        padding: .5rem;
+        color: #000 !important;
+        transition: var(--transition-box);
     }
 
-        #select-grid .select-item a {
-            color: #000;
+        .select-item:hover, .select-item:focus {
+            transform: var(--transform-mv_up);
+            box-shadow: var(--box-shadow);
         }
 
-        #select-grid .select-item .thumbnail {
-            border: 2px solid #000;
+        .select-item .thumbnail {
             width: 100%;
+            height: 15rem;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
         }
 
-        #select-grid .select-item .item-headline {
-            font-size: 1.25rem;
-            padding: 0 1em;
+            .thumbnail img {
+                height: 100%;
+            }
+
+        .select-item .small {
+            color: var(--color-light_gray);
+            font-size: 1.125rem;
+            font-style: italic;
+            font-weight: 600;
+            margin: .5rem .75rem .25rem;
+        }
+
+        .select-item .attribution {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 .75rem;
         }
 
 #work-area {
@@ -153,7 +190,7 @@ a:hover, a:focus {
 }
 
 .accessibility-button {
-    position: fixed;
+    position: absolute;
     left: 3rem;
     margin-top: 24px;
 }
@@ -225,6 +262,17 @@ button, .button {
     left: 50%;
     transform: translateX(-50%);
 }
+
+    #to-top a {
+        background: #3C153B;
+        transition: var(--transition-btn);
+    }
+
+        #to-top a:hover {
+            background: #fcfc62;
+            color: #000;
+            box-shadow: var(--box-shadow);
+        }
 
 #controls {
     display: flex;
@@ -330,7 +378,14 @@ div.modal {
             position: absolute;
             top: 1rem;
             right: 1rem;
+            padding: .25rem 0;
+            height: 2.5rem;
+            width: 2.5rem;
         }
+
+            div.modal-content > button.close img {
+                width: 2rem;
+            }
     
 /*Color picker wheel*/
 #picker {
@@ -397,6 +452,10 @@ div.modal-button {
         grid-template-columns: repeat(3, 1fr);
     }
 
+    /* General */
+    h1 {
+        font-size: 3rem;
+    }
 }
 /* max-width: 768px */
 @media screen and (max-width: 48rem) {
