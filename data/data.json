@@ -1,0 +1,84 @@
+{
+    "images" : [
+        {
+            "id" : "001",
+            "img" : "001.svg",
+            "artist" : "Christina An"
+        },
+        {
+            "id" : "002",
+            "img" : "002.svg",
+            "artist" : "Stephen Brennan"
+        },
+        {
+            "id" : "003",
+            "img" : "003.svg",
+            "artist" : "John Davalos"
+        },
+        {
+            "id" : "004",
+            "img" : "004.svg",
+            "artist" : "Angela Filtz"
+        },
+        {
+            "id" : "005",
+            "img" : "005.svg",
+            "artist" : "Travis Hove"
+        },
+        {
+            "id" : "006",
+            "img" : "006.svg",
+            "artist" : "Maxime Lewing"
+        },
+        {
+            "id" : "007",
+            "img" : "007.svg",
+            "artist" : "Fiona Lynch"
+        },
+        {
+            "id" : "008",
+            "img" : "008.svg",
+            "artist" : "Sara Meixner"
+        },
+        {
+            "id" : "009",
+            "img" : "009.svg",
+            "artist" : "Elija Rizzuto Smith"
+        },
+        {
+            "id" : "010",
+            "img" : "010.svg",
+            "artist" : "Julia Schultz"
+        },
+        {
+            "id" : "011",
+            "img" : "011.svg",
+            "artist" : "Ben Spurr"
+        },
+        {
+            "id" : "012",
+            "img" : "012.svg",
+            "artist" : "Anthony Srnka"
+        },
+        {
+            "id" : "013",
+            "img" : "013.svg",
+            "artist" : "Clay Tercek"
+        },
+        {
+            "id" : "014",
+            "img" : "014.svg",
+            "artist" : "Michael Toone"
+        },
+        {
+            "id" : "015",
+            "img" : "015.svg",
+            "artist" : "Ciaran Wagner"
+        },
+        {
+            "id" : "016",
+            "img" : "016.svg",
+            "artist" : "Lindsey Wolf"
+        }
+    ]
+}
