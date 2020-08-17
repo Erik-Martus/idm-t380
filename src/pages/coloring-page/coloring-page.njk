@@ -1,0 +1,52 @@
+{% extends "../layout-coloring.njk" %}
+
+{% block content %}
+<main>
+    <div class="content__page">
+        <div class="work-area">
+            <h2>Art by: {{ image.artist }}</h2>
+
+            {% include "../{{ image.src }}" %}
+        </div>
+
+        <div class="controls">
+            <div id="color-bar" class="control-bar">
+                <div id="swatch-01" class="swatch active" onclick="setColor(this)"></div>
+                <div id="swatch-02" class="swatch" onclick="setColor(this)"></div>
+                <div id="swatch-03" class="swatch" onclick="setColor(this)"></div>
+                <div id="swatch-04" class="swatch" onclick="setColor(this)"></div>
+                <div id="swatch-05" class="swatch" onclick="setColor(this)"></div>
+                <img src="https://image.flaticon.com/icons/svg/3124/3124925.svg" id="color-picker" alt="hex" class="hex-picker">
+            </div>
+
+            <div id="tool-bar" class="control-bar">
+                <div id="pencilTool" class="toolItem">
+                    {% include "../images/icons/pencil.svg" %}
+                </div>
+                <div id="eraserTool" class="toolItem">
+                    {% include "../images/icons/eraser.svg" %}
+                </div>
+                <div id="undoButton" class="toolItem">
+                    {% include "../images/icons/undo.svg" %}
+                </div>
+                <div id="redoButton" class="toolItem">
+                    {% include "../images/icons/redo.svg" %}
+                </div>
+                <div id="shareButton" class="toolItem">
+                    {% include "../images/icons/share.svg" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div id="color-picker_modal" class="modal">
+    <div class="modal-content">
+        <h2>Select a Color</h2>
+        <button class="btn close"><img src="../src/images/icons/close.svg" alt="close icon"></button>
+        <div id="picker"></div>
+        <div id="selected-color-shower" class="modal-button"><h3 id="hexchange">#FFFFFF</h3></div>
+        <div id="confirm" class="modal-button"><h3>Pick this color</h3></div>
+    </div>
+</div>
+{% endblock %}
