@@ -1,7 +1,7 @@
 //for now still not using the node package
 //const iro = require('@jaames/iro');
 const picker_tool = document.getElementById('color-picker');
-
+// hi
 picker_tool.addEventListener('mousedown', function() {
     openModal(this.id);
 });

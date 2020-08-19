@@ -1,5 +1,39 @@
 {
   "dependencies": {
     "@jaames/iro": "^5.1.8"
-  }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^6.0.0",
+    "gulp-if": "^3.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-strip-debug-arbitrary": "^1.0.2",
+    "gulp-uglify": "^3.0.2",
+    "yargs": "^15.4.1"
+  },
+  "name": "idm-t380",
+  "description": "Summer 2020 - Workflow Optimization team project",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Erik-Martus/idm-t380.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Erik-Martus/idm-t380/issues"
+  },
+  "homepage": "https://github.com/Erik-Martus/idm-t380#readme"
 }
