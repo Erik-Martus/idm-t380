@@ -1,0 +1,26 @@
+<!-- layout.njk -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coloring Book</title>
+
+    <script src="https://kit.fontawesome.com/080c06f1d6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+</head>
+<body  id="top" class="accessibility-mode-off">
+<header>
+      <div class="content__header">
+        <button class="accessibility-button" onclick="changeBackground()">
+          <i class="fas fa-universal-access"></i>
+        </button>
+        <h1>Coloring Book</h1>
+      </div>
+    </header>
+    
+    {% block content %} {% endblock %}
+
+  <script src="../scripts/index.js"></script>
+</body>
+</html>
