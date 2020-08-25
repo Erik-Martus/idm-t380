@@ -32,16 +32,21 @@ function openModal(e) {
 };
 
 //container for previous actions for undo
-const theStack = [];
-const redoStack = []; //another one
+let theStack = [];
+let redoStack = []; //another one
 
 //initialize undo button
 const undoBtn = document.getElementById('undoButton');
 undoBtn.addEventListener('click', undoColor);
 
 //initialize redo button
+<<<<<<< Updated upstream:common/scripts/index.js
 const redoBtn = document.getElementById('redoButton');
 redoBtn.addEventListener('click', redoColor);
+=======
+ const redoBtn = document.getElementById('redoButton');
+ redoBtn.addEventListener('click', redoColor);
+>>>>>>> Stashed changes:src/scripts/index.js
 
 //confirmation button for color picker
 const confirm = document.getElementById('confirm');
@@ -80,6 +85,7 @@ let customcolori = 0;
 function cachecolor() {
     //use the almighty modulo to cache the new color
     colorswatches[customcolori%5].style.background=window.newColor;
+    colorswatches[customcolori%5].classList.add('active');
     customcolori+= 1;
     //close the modal upon adding new color
     window.modal.classList.remove('active');
@@ -88,6 +94,7 @@ function cachecolor() {
 //recolor SVG
 //also add previous item/color combo to stack for undo function
 function clickEvent(evt) {
+<<<<<<< Updated upstream:common/scripts/index.js
 <<<<<<< Updated upstream
     window.prevItem = evt.target;
     window.prevColor=(evt.target.getAttribute('fill'));
@@ -95,17 +102,34 @@ function clickEvent(evt) {
     //below is what changes the color
     evt.target.setAttribute('fill', currentColor);
 =======
+=======
+    redoStack = [];
+>>>>>>> Stashed changes:src/scripts/index.js
     const target = evt.target;
+    theStack.push([target, target.getAttribute('fill')]);
     if (target.classList.contains('paintable')) {
+<<<<<<< Updated upstream:common/scripts/index.js
       window.prevItem = evt.target;
       window.prevColor=(evt.target.getAttribute('fill'));
       theStack.push([window.prevItem, window.prevColor]);
       //below is what changes the color
+=======
+      //below is what changes the color
+      if (pencil.classList.contains('active')) {
+          //console.log('Using pencil tool');
+          currentColor = selectedColor;
+      } else if (eraser.classList.contains('active')) {
+          currentColor = '#ffffff';
+      }
+>>>>>>> Stashed changes:src/scripts/index.js
       evt.target.setAttribute('fill', currentColor);
+      theStack.push([evt.target, currentColor]);
+      console.log(theStack);
     }
 >>>>>>> Stashed changes
 }
 
+<<<<<<< Updated upstream:common/scripts/index.js
 //set new color to pencil in
 function setColor(evt) {
     // Remove active class from all swatches
@@ -114,22 +138,48 @@ function setColor(evt) {
     currentColor = RGBToHex(currentColor);
     //console.log(currentColor);
     currentColorItem.classList.add('active');
+=======
+function exists(arr, search) {
+    return arr.some(row => row.includes(search));
+}
+
+//initialize coloring tools
+const pencil = document.getElementById('pencilTool');
+const eraser = document.getElementById('eraserTool');
+
+//set new color to pencil in
+function setColor(evt) {
+    //console.log(evt);
+    selectedColorItem = evt;
+    selectedColor = getComputedStyle(evt).background;
+    selectedColor = RGBToHex(selectedColor);
+    var colorswatches = document.querySelectorAll('.swatch');
+    //console.log(colorswatches);
+    colorswatches.forEach(swatch => {
+        swatch.classList.remove('active');
+    });
+    window.setTimeout(() => {
+        selectedColorItem.classList.add('active');
+    }, 100);
+    //console.log(selectedColor);
+>>>>>>> Stashed changes:src/scripts/index.js
 };
 
 //undo previous color change to svg
 function undoColor(){
     if (theStack.length>0){
-        let theObject = theStack[theStack.length-1][0];
-        let theColor = theStack[theStack.length-1][1];
-        if(theColor == null){
-            theColor = checkDefault(theObject);
-        }
-        theObject.setAttribute('fill', theColor);
-        redoStack.push(theStack.pop()); //pop from undo to redo
-        console.log(redoStack);
+            let theObject = theStack[theStack.length-2][0];
+            let theColor = theStack[theStack.length-2][1];
+            console.log(theColor);
+            theObject.setAttribute('fill', theColor);
+            redoStack.push(theStack.pop()); //pop current from undo to redo
+            redoStack.push(theStack.pop()); //pop last from undo to redo
+            console.log('undo: '+theStack);
+            console.log('redo: '+redoStack);
     }
 }
 
+<<<<<<< Updated upstream:common/scripts/index.js
 function redoColor(){
     console.log('hi')
     if (redoStack.length>0){
@@ -149,5 +199,39 @@ function checkDefault(theItem){
     }
     else {
         return '#FFFFFF';
+=======
+ function redoColor(){
+     if (redoStack.length>0){
+         let theObject = redoStack[redoStack.length-2][0];
+         let theColor = redoStack[redoStack.length-2][1];
+         theObject.setAttribute('fill', theColor);
+         theStack.push(redoStack.pop());
+         theStack.push(redoStack.pop());
+         console.log(theStack);
+         console.log('undo: '+theStack);
+         console.log('redo: '+redoStack);
+     }
+ }
+
+// Back Button
+function confirmAction() {
+	var txt;
+	if (confirm("Are you sure you want to go back? All changes will be lost!")) {
+		window.history.back();
+	}
+}	
+
+// Toggle background color
+function changeBackground() {
+    var element = document.body;
+    var isColored = false;
+
+    if (isColored) {
+        isColored = false;
+    } else {
+        element.classList.toggle("accessibility-mode")
+        element.classList.toggle("accessibility-mode-off")
+        isColored = true;
+>>>>>>> Stashed changes:src/scripts/index.js
     }
 }
