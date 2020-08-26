@@ -31,17 +31,17 @@ function openModal(e) {
     }
 };
 
-//container for previous actions for undo
-const theStack = [];
-const redoStack = []; //another one
+//container for previous actions for undo/redo
+let undoStack = [];
+let redoStack = [];
 
 //initialize undo button
 const undoBtn = document.getElementById('undoButton');
 undoBtn.addEventListener('click', undoColor);
 
 //initialize redo button
-// const redoBtn = document.getElementById('redoButton');
-// redoBtn.addEventListener('click', redoColor);
+const redoBtn = document.getElementById('redoButton');
+redoBtn.addEventListener('click', redoColor);
 
 //confirmation button for color picker
 const confirm = document.getElementById('confirm');
@@ -83,26 +83,38 @@ function cachecolor() {
     customcolori+= 1;
     //close the modal upon adding new color
     window.modal.classList.remove('active');
+    setColor(colorswatches[(customcolori%5)-1]);
+    console.log(colorswatches[customcolori%5]);
 }
 
-//recolor SVG
-//also add previous item/color combo to stack for undo function
+//driver for when you click inside the coloring page
+//driver for changing color, as well as helper functions for undo/redo
 function clickEvent(evt) {
-    console.log(evt)
-    const target = evt.target;
+    const target = evt.target; //the path that was clicked on
     if (target.classList.contains('paintable')) {
-      window.prevItem = evt.target;
-      window.prevColor = (evt.target.getAttribute('fill'));
-      theStack.push([window.prevItem, window.prevColor]);
-      //below is what changes the color
+        checkTool(); //change global currentColor based on if pencil or eraser is selected
+        undoRedoManage(target); //a function for changing whats stored in undo/redo when things are colored
+        target.setAttribute('fill', currentColor); //the line that actually colors the target when its clicked on
+    }
+}
+
+//modify undo/redo stack when the user colors something
+function undoRedoManage(target) {
+    redoStack = []; //can't redo if the last action wasn't an undo
+    let prevColor = target.getAttribute('fill'); //current color before its changed
+    undoStack.push([target, prevColor]); //push target with previous color to undo stack
+    checkTool();
+    undoStack.push([target, currentColor]); //push target with current color to undo stack
+}
+
+//modifies global var currentColor based on if pencil or eraser is selected
+function checkTool() {
       if (pencil.classList.contains('active')) {
           console.log('Using pencil tool');
           currentColor = selectedColor;
       } else if (eraser.classList.contains('active')) {
           currentColor = '#ffffff';
       }
-      evt.target.setAttribute('fill', currentColor);
-    }
 }
 
 //initialize coloring tools
@@ -116,14 +128,12 @@ function setColor(evt) {
     selectedColor = getComputedStyle(evt).background;
     selectedColor = RGBToHex(selectedColor);
     var colorswatches = document.querySelectorAll('.swatch');
-    console.log(colorswatches);
     colorswatches.forEach(swatch => {
         swatch.classList.remove('active');
     });
     window.setTimeout(() => {
         selectedColorItem.classList.add('active');
     }, 100);
-    console.log(selectedColor);
 };
 
 //set pencil tool functionality
@@ -144,38 +154,25 @@ eraser.addEventListener('click', function() {
 
 //undo previous color change to svg
 function undoColor(){
-    if (theStack.length>0){
-        let theObject = theStack[theStack.length-1][0];
-        let theColor = theStack[theStack.length-1][1];
-        if(theColor == null){
-            theColor = checkDefault(theObject);
-        }
+    if (undoStack.length>0){
+        let theObject = undoStack[undoStack.length-2][0];
+        let theColor = undoStack[undoStack.length-2][1];
         theObject.setAttribute('fill', theColor);
-        redoStack.push(theStack.pop()); //pop from undo to redo
-        console.log(redoStack);
+        redoStack.push(undoStack.pop()); //pop the one to redo to from undo to redo
+        redoStack.push(undoStack.pop()); //pop the one you undo'd to from undo to redo
     }
 }
 
-// function redoColor(){
-//     if (redoStack.length>0){
-//         let theObject = redoStack[redoStack.length-1][0];
-//         let theColor = redoStack[redoStack.length-1][1];
-//         if(theColor == null){
-//             theColor = checkDefault(theObject);
-//         }
-//         theObject.setAttribute('fill', theColor);
-//         theStack.push(redoStack.pop());
-//     }
-// }
-
-function checkDefault(theItem){
-    if(theItem.classList.contains('defaultBlack')){
-        return '#000000';
-    }
-    else {
-        return '#FFFFFF';
-    }
-}
+//redo. this only happens if the last thing you did was an undo
+ function redoColor(){
+     if (redoStack.length>0){
+         let theObject = redoStack[redoStack.length-2][0];
+         let theColor = redoStack[redoStack.length-2][1];
+         theObject.setAttribute('fill', theColor);
+         undoStack.push(redoStack.pop()); //pop the one you undo'd to from redo to undo
+         undoStack.push(redoStack.pop()); //pop the one to redo to from redo to undo
+     }
+ }
 
 // Back Button
 function confirmAction() {
