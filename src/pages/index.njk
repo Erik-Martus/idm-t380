@@ -1,5 +1,7 @@
-<!-- index.njk -->
-{% extends "layout.njk" %}
+---
+layout: layout.njk
+permalink: "./index.html"
+---
 
 {% block content %}
     <main>
@@ -8,7 +10,7 @@
 
         <div id="select-grid">
 
-            {% for image in images %}
+            {% for image in images -%}
             <a href="./coloring-page/{{ image.id }}.html" class="select-item">
                 <div class="thumbnai">
                     <img src="{{ image.src }}" alt="Artwork created by {{ image.artist }}">
@@ -16,7 +18,7 @@
                 <p class="small">Art by:</p>
                 <h3 class="attribution">{{ image.artist }}</h3>
             </a>
-            {% endfor %}
+            {% endfor -%}
           
         </div>
       </div>

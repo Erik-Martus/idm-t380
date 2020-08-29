@@ -9,8 +9,6 @@
 *       font-weight: 700;
 */
 
-@import url("normalize.css");
-
 :root {
     /* Font Variables */
     --font-heading: 'Poppins', Helvetica, Arial, sans-serif;

@@ -1,12 +1,14 @@
-{% extends "../layout-coloring.njk" %}
+---
+layout: layout-coloring.njk
+---
 
 {% block content %}
 <main>
     <div class="content__page">
         <div class="work-area">
-            <h2>Art by: {{ image.artist }}</h2>
+            {# <h2>Art by: {{ image.artist }}</h2>
 
-            {% include "../{{ image.src }}" %}
+            {% include "../{{ image.src }}" %} #}
         </div>
 
         <div class="controls">
@@ -21,19 +23,19 @@
 
             <div id="tool-bar" class="control-bar">
                 <div id="pencilTool" class="toolItem">
-                    {% include "../images/icons/pencil.svg" %}
+                    {# {% include "../images/icons/pencil.svg" %} #}
                 </div>
                 <div id="eraserTool" class="toolItem">
-                    {% include "../images/icons/eraser.svg" %}
+                    {# {% include "../images/icons/eraser.svg" %} #}
                 </div>
                 <div id="undoButton" class="toolItem">
-                    {% include "../images/icons/undo.svg" %}
+                    {# {% include "../images/icons/undo.svg" %} #}
                 </div>
                 <div id="redoButton" class="toolItem">
-                    {% include "../images/icons/redo.svg" %}
+                    {# {% include "../images/icons/redo.svg" %} #}
                 </div>
                 <div id="shareButton" class="toolItem">
-                    {% include "../images/icons/share.svg" %}
+                    {# {% include "../images/icons/share.svg" %} #}
                 </div>
             </div>
         </div>

@@ -122,5 +122,6 @@ dist
 # Local raw assets
 raw/
 
-# Build folder
+# Folders used in build process
 build/
+temp/

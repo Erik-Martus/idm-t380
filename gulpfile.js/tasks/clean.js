@@ -1,28 +1,13 @@
-const gulp = require('gulp');
-function defaultTask(cb) {
-    console.log("hello")
-    cb()
-  }
-  
-  exports.default = defaultTask
-  
-  const { series, parallel } = require('gulp')
+const path = require('path')
+const gulp = require('gulp')
+const del = require('del')
 
-  function clean(cb) {
-    console.log('clean task')
-    cb()
-  }
-  
-  function css(cb) {
-    console.log('css task')
-    cb()
-  }
-  
-  function javascript(cb) {
-    console.log('javascript task')
-    cb()
-  }
-  
-  exports.build = series(clean, parallel(css, javascript))
-  
-  
+// temp folder is used as a go between for eleventy to avoid conflicts with other gulp tasks
+const dirTemp = path.join(__dirname, '../../temp')
+const dirBuild = path.join(__dirname, '../../build')
+
+const cleanTask = () => {
+  return del([dirTemp, dirBuild], { force: true })
+}
+
+module.exports = cleanTask
