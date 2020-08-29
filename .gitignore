@@ -121,3 +121,6 @@ dist
 
 # Local raw assets
 raw/
+
+# Build folder
+build/
