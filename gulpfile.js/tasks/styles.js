@@ -13,13 +13,13 @@ function styles() {
   const outputStyle = argv.production ? 'compressed' : 'nested'
   return src(source)
     .pipe(sourcemaps.init())
-    .pipe(
-      autoprefixer({
-        grid: true
-      })
-    )
+    // .pipe(
+    //   autoprefixer({
+    //     grid: true
+    //   })
+    // )
     .pipe(concat('main.css'))
-    .pipe(cleanCSS())
+    // .pipe(cleanCSS())
     .pipe(sourcemaps.write('.'))
     .pipe(dest(path.join(__dirname, '../../build/css')))
 }

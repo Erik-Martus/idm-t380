@@ -2,28 +2,26 @@
 layout: layout.njk
 permalink: "./index.html"
 ---
+<main>
+  <div class="content">
+    <h2>Select a Design</h2>
 
-{% block content %}
-    <main>
-      <div class="content">
-        <h2>Select a Design</h2>
+    <div id="select-grid">
 
-        <div id="select-grid">
-
-            {% for image in images -%}
-            <a href="./coloring-page/{{ image.id }}.html" class="select-item">
-                <div class="thumbnai">
-                    <img src="{{ image.src }}" alt="Artwork created by {{ image.artist }}">
-                </div>
-                <p class="small">Art by:</p>
-                <h3 class="attribution">{{ image.artist }}</h3>
-            </a>
-            {% endfor -%}
-          
-        </div>
-      </div>
-    </main>
-    <div id="to-top">
-      <a class="button jump-link" href="#top">Back to Top</a>
+        {% for image in data.images -%}
+        <a href="./coloring-page/{{ image.id }}.html" class="select-item">
+            <div class="thumbnail">
+                <img src="./images/{{ image.src }}" alt="Artwork created by {{ image.artist }}">
+            </div>
+            <p class="small">Art by:</p>
+            <h3 class="attribution">{{ image.artist }}</h3>
+        </a>
+        {% endfor -%}
+      
     </div>
-{% endblock %}
+  </div>
+</main>
+
+<div id="to-top">
+  <a class="button jump-link" href="#top">Back to Top</a>
+</div>

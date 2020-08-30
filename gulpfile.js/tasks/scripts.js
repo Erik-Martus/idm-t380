@@ -31,7 +31,7 @@ async function scriptsTask() {
     .pipe(uglify())
     .pipe(stripDebug())
     .pipe(sourcemaps.write('.'))
-    .pipe(dest(path.join(__dirname, '../../build/js')))
+    .pipe(dest(path.join(__dirname, '../../build/scripts')))
 }
 module.exports = scriptsTask
 // module.exports = series(lint, scriptsTask)

@@ -1,17 +1,23 @@
 ---
+pagination:
+    data: data.images
+    size: 1
+    alias: image
+permalink: "./coloring-page/{{ image.id }}.html"
 layout: layout-coloring.njk
+artwork: "./images/{{ image.src }}"
 ---
 
 {% block content %}
 <main>
     <div class="content__page">
-        <div class="work-area">
-            {# <h2>Art by: {{ image.artist }}</h2>
-
-            {% include "../{{ image.src }}" %} #}
+        <div id="work-area">
+            <h2>Art by: {{ image.artist }}</h2>
         </div>
 
-        <div class="controls">
+        {{ image.src | svgContents | safe }}
+
+        <div id="controls">
             <div id="color-bar" class="control-bar">
                 <div id="swatch-01" class="swatch active" onclick="setColor(this)"></div>
                 <div id="swatch-02" class="swatch" onclick="setColor(this)"></div>
@@ -22,20 +28,20 @@ layout: layout-coloring.njk
             </div>
 
             <div id="tool-bar" class="control-bar">
-                <div id="pencilTool" class="toolItem">
-                    {# {% include "../images/icons/pencil.svg" %} #}
+                <div id="pencilTool" class="toolItem active">
+                    <img class="toolIcon" src="../images/icons/pencil.svg" alt="Pencil Tool Icon">
                 </div>
                 <div id="eraserTool" class="toolItem">
-                    {# {% include "../images/icons/eraser.svg" %} #}
+                    <img class="toolIcon" src="../images/icons/eraser.svg" alt="Eraser Tool Icon">
                 </div>
                 <div id="undoButton" class="toolItem">
-                    {# {% include "../images/icons/undo.svg" %} #}
+                    <img class="toolIcon" src="../images/icons/undo.svg" alt="Undo Icon">
                 </div>
                 <div id="redoButton" class="toolItem">
-                    {# {% include "../images/icons/redo.svg" %} #}
+                    <img class="toolIcon" src="../images/icons/redo.svg" alt="Redo Icon">
                 </div>
                 <div id="shareButton" class="toolItem">
-                    {# {% include "../images/icons/share.svg" %} #}
+                    <img class="toolIcon" src="../images/icons/share.svg" alt="Share Icon">
                 </div>
             </div>
         </div>
@@ -45,7 +51,7 @@ layout: layout-coloring.njk
 <div id="color-picker_modal" class="modal">
     <div class="modal-content">
         <h2>Select a Color</h2>
-        <button class="btn close"><img src="../src/images/icons/close.svg" alt="close icon"></button>
+        <button class="btn close"><img src="../images/icons/close.svg" alt="close icon"></button>
         <div id="picker"></div>
         <div id="selected-color-shower" class="modal-button"><h3 id="hexchange">#FFFFFF</h3></div>
         <div id="confirm" class="modal-button"><h3>Pick this color</h3></div>

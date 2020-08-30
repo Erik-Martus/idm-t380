@@ -1,0 +1,85 @@
+{
+  "siteTitle": "Coloring Book",
+  "images": [
+    {
+      "id": "001",
+      "src": "001.svg",
+      "artist": "Christina An"
+    },
+    {
+      "id": "002",
+      "src": "002.svg",
+      "artist": "Stephen Brennan"
+    },
+    {
+      "id": "003",
+      "src": "003.svg",
+      "artist": "John Davalos"
+    },
+    {
+      "id": "004",
+      "src": "004.svg",
+      "artist": "Angela Filtz"
+    },
+    {
+      "id": "005",
+      "src": "005.svg",
+      "artist": "Travis Hove"
+    },
+    {
+      "id": "006",
+      "src": "006.svg",
+      "artist": "Maxime Lewing"
+    },
+    {
+      "id": "007",
+      "src": "007.svg",
+      "artist": "Fiona Lynch"
+    },
+    {
+      "id": "008",
+      "src": "008.svg",
+      "artist": "Sara Meixner"
+    },
+    {
+      "id": "009",
+      "src": "009.svg",
+      "artist": "Elija Rizzuto Smith"
+    },
+    {
+      "id": "010",
+      "src": "010.svg",
+      "artist": "Julia Schultz"
+    },
+    {
+      "id": "011",
+      "src": "011.svg",
+      "artist": "Ben Spurr"
+    },
+    {
+      "id": "012",
+      "src": "012.svg",
+      "artist": "Anthony Srnka"
+    },
+    {
+      "id": "013",
+      "src": "013.svg",
+      "artist": "Clay Tercek"
+    },
+    {
+      "id": "014",
+      "src": "014.svg",
+      "artist": "Michael Toone"
+    },
+    {
+      "id": "015",
+      "src": "015.svg",
+      "artist": "Ciaran Wagner"
+    },
+    {
+      "id": "016",
+      "src": "016.svg",
+      "artist": "Lindsey Wolf"
+    }
+  ]
+}
