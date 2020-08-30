@@ -12,6 +12,16 @@ picker_tool.addEventListener('mousedown', function () {
     openModal(this.id);
 });
 
+const image_gallery = document.getElementById('image-gallery');
+const gallery_modal = document.getElementById('image-gallery_modal');
+image_gallery.addEventListener('mousedown', function () {
+    if (gallery_modal.classList.contains('active')) {
+        gallery_modal.classList.remove('active');
+    } else {
+        gallery_modal.classList.add('active');
+    }
+});
+
 // Function displays selected modal. Accepts paramater of the clicked element's ID.
 function openModal(e) {
     window.modal = document.getElementById(`${e}_modal`);

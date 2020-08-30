@@ -13,9 +13,8 @@ artwork: "./images/{{ image.src }}"
     <div class="content__page">
         <div id="work-area">
             <h2>Art by: {{ image.artist }}</h2>
+            {{ image.src | svgContents | safe }}
         </div>
-
-        {{ image.src | svgContents | safe }}
 
         <div id="controls">
             <div id="color-bar" class="control-bar">
