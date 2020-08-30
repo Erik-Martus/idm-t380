@@ -24,7 +24,7 @@ async function scriptsTask() {
   await del(path.join(__dirname, '../../build/js/*.js'))
   return src(source)
     .pipe(sourcemaps.init())
-    .pipe(concat('index.js'))
+    // .pipe(concat('index.js'))
     .pipe(babel({ presets: ['@babel/env'] }))
     .pipe(gulpif(argv.prod, uglify()))
     .pipe(gulpif(argv.prod, stripDebug()))
