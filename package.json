@@ -30,6 +30,7 @@
     "gulp-if": "^3.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
+    "gulp-strip-css-comments": "^2.0.0",
     "gulp-strip-debug-arbitrary": "^1.0.2",
     "gulp-uglify": "^3.0.2",
     "uglify": "^0.1.5",

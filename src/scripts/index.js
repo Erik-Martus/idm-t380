@@ -1,14 +1,14 @@
 //initialize color picker with iro
 var colorPicker = new iro.ColorPicker("#picker", {
-  // Set the size of the color picker wheel. can only be modified in js in px
-  width: 200,
-  // Set the initial color to pure white
-  color: "#fff"
+    // Set the size of the color picker wheel. can only be modified in js in px
+    width: 200,
+    // Set the initial color to pure white
+    color: "#fff"
 });
 
 //open modal
 const picker_tool = document.getElementById('color-picker');
-picker_tool.addEventListener('mousedown', function() {
+picker_tool.addEventListener('mousedown', function () {
     openModal(this.id);
 });
 
@@ -24,7 +24,7 @@ function openModal(e) {
 
     // If user clicks outside of the modal content box, modal will close
     // Note this requires content inside of the modal content box to work (not positioned absolutely)
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             window.modal.classList.remove('active');
         }
@@ -53,38 +53,38 @@ function RGBToHex(rgb) {
     let sep = rgb.indexOf(",") > -1 ? "," : " ";
     // Turn "rgb(r,g,b)" into [r,g,b]
     rgb = rgb.substr(4).split(")")[0].split(sep);
-  
+
     let r = (+rgb[0]).toString(16),
         g = (+rgb[1]).toString(16),
         b = (+rgb[2]).toString(16);
-  
+
     if (r.length == 1)
-      r = "0" + r;
+        r = "0" + r;
     if (g.length == 1)
-      g = "0" + g;
+        g = "0" + g;
     if (b.length == 1)
-      b = "0" + b;
-  
+        b = "0" + b;
+
     return "#" + r + g + b;
-  }
+}
 
 //display hex code when picker is used
 var colorswatches = document.getElementsByClassName("swatch");
-colorPicker.on('color:change', function(color) {
+colorPicker.on('color:change', function (color) {
     window.newColor = document.getElementById('hexchange').innerHTML = (color.hexString);
-    document.getElementById('selected-color-shower').style.backgroundColor=window.newColor;
+    document.getElementById('selected-color-shower').style.backgroundColor = window.newColor;
 });
 
 //cache color as an option
 let customcolori = 0;
 function cachecolor() {
     //use the almighty modulo to cache the new color
-    colorswatches[customcolori%5].style.background=window.newColor;
-    customcolori+= 1;
+    colorswatches[customcolori % 5].style.background = window.newColor;
+    customcolori += 1;
     //close the modal upon adding new color
     window.modal.classList.remove('active');
-    setColor(colorswatches[(customcolori%5)-1]);
-    console.log(colorswatches[customcolori%5]);
+    setColor(colorswatches[(customcolori % 5) - 1]);
+    console.log(colorswatches[customcolori % 5]);
 }
 
 //driver for when you click inside the coloring page
@@ -109,12 +109,12 @@ function undoRedoManage(target) {
 
 //modifies global var currentColor based on if pencil or eraser is selected
 function checkTool() {
-      if (pencil.classList.contains('active')) {
-          console.log('Using pencil tool');
-          currentColor = selectedColor;
-      } else if (eraser.classList.contains('active')) {
-          currentColor = '#ffffff';
-      }
+    if (pencil.classList.contains('active')) {
+        console.log('Using pencil tool');
+        currentColor = selectedColor;
+    } else if (eraser.classList.contains('active')) {
+        currentColor = '#ffffff';
+    }
 }
 
 //initialize coloring tools
@@ -137,7 +137,7 @@ function setColor(evt) {
 };
 
 //set pencil tool functionality
-pencil.addEventListener('click', function() {
+pencil.addEventListener('click', function () {
     if (eraser.classList.contains('active')) {
         eraser.classList.remove('active');
         pencil.classList.add('active');
@@ -145,7 +145,7 @@ pencil.addEventListener('click', function() {
 })
 
 //set eraser tool functionality
-eraser.addEventListener('click', function() {
+eraser.addEventListener('click', function () {
     if (pencil.classList.contains('active')) {
         pencil.classList.remove('active');
         eraser.classList.add('active');
@@ -153,10 +153,10 @@ eraser.addEventListener('click', function() {
 })
 
 //undo previous color change to svg
-function undoColor(){
-    if (undoStack.length>0){
-        let theObject = undoStack[undoStack.length-2][0];
-        let theColor = undoStack[undoStack.length-2][1];
+function undoColor() {
+    if (undoStack.length > 0) {
+        let theObject = undoStack[undoStack.length - 2][0];
+        let theColor = undoStack[undoStack.length - 2][1];
         theObject.setAttribute('fill', theColor);
         redoStack.push(undoStack.pop()); //pop the one to redo to from undo to redo
         redoStack.push(undoStack.pop()); //pop the one you undo'd to from undo to redo
@@ -164,23 +164,23 @@ function undoColor(){
 }
 
 //redo. this only happens if the last thing you did was an undo
- function redoColor(){
-     if (redoStack.length>0){
-         let theObject = redoStack[redoStack.length-2][0];
-         let theColor = redoStack[redoStack.length-2][1];
-         theObject.setAttribute('fill', theColor);
-         undoStack.push(redoStack.pop()); //pop the one you undo'd to from redo to undo
-         undoStack.push(redoStack.pop()); //pop the one to redo to from redo to undo
-     }
- }
+function redoColor() {
+    if (redoStack.length > 0) {
+        let theObject = redoStack[redoStack.length - 2][0];
+        let theColor = redoStack[redoStack.length - 2][1];
+        theObject.setAttribute('fill', theColor);
+        undoStack.push(redoStack.pop()); //pop the one you undo'd to from redo to undo
+        undoStack.push(redoStack.pop()); //pop the one to redo to from redo to undo
+    }
+}
 
 // Back Button
 function confirmAction() {
-	var txt;
-	if (confirm("Are you sure you want to go back? All changes will be lost!")) {
-		window.history.back();
-	}
-}	
+    var txt;
+    if (confirm("Are you sure you want to go back? All changes will be lost!")) {
+        window.history.back();
+    }
+}
 
 // Toggle background color
 function changeBackground() {

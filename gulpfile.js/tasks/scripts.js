@@ -1,5 +1,5 @@
 const path = require('path')
-// const argv = require('yargs').argv
+const argv = require('yargs').argv
 const { dest, series, src } = require('gulp')
 const babel = require('gulp-babel')
 const concat = require('gulp-concat')
@@ -26,10 +26,8 @@ async function scriptsTask() {
     .pipe(sourcemaps.init())
     .pipe(concat('index.js'))
     .pipe(babel({ presets: ['@babel/env'] }))
-    // .pipe(gulpif(argv.production, uglify()))
-    // .pipe(gulpif(argv.production, stripDebug()))
-    .pipe(uglify())
-    .pipe(stripDebug())
+    .pipe(gulpif(argv.prod, uglify()))
+    .pipe(gulpif(argv.prod, stripDebug()))
     .pipe(sourcemaps.write('.'))
     .pipe(dest(path.join(__dirname, '../../build/scripts')))
 }
