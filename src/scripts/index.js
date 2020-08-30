@@ -1,8 +1,3 @@
-window.onload = (event) => {
-    var initialColor = document.querySelector('.swatch');
-    setColor(initialColor);
-}
-var selectedColor;
 //initialize color picker with iro
 var colorPicker = new iro.ColorPicker("#picker", {
     // Set the size of the color picker wheel. can only be modified in js in px
@@ -92,7 +87,16 @@ function cachecolor() {
     console.log(colorswatches[customcolori % 5]);
 }
 
-
+//driver for when you click inside the coloring page
+//driver for changing color, as well as helper functions for undo/redo
+function clickEvent(evt) {
+    const target = evt.target; //the path that was clicked on
+    if (target.classList.contains('paintable')) {
+        checkTool(); //change global currentColor based on if pencil or eraser is selected
+        undoRedoManage(target); //a function for changing whats stored in undo/redo when things are colored
+        target.setAttribute('fill', currentColor); //the line that actually colors the target when its clicked on
+    }
+}
 
 //modify undo/redo stack when the user colors something
 function undoRedoManage(target) {
@@ -103,6 +107,16 @@ function undoRedoManage(target) {
     undoStack.push([target, currentColor]); //push target with current color to undo stack
 }
 
+//modifies global var currentColor based on if pencil or eraser is selected
+function checkTool() {
+    if (pencil.classList.contains('active')) {
+        console.log('Using pencil tool');
+        currentColor = selectedColor;
+    } else if (eraser.classList.contains('active')) {
+        currentColor = '#ffffff';
+    }
+}
+
 //initialize coloring tools
 const pencil = document.getElementById('pencilTool');
 const eraser = document.getElementById('eraserTool');
@@ -110,8 +124,8 @@ const eraser = document.getElementById('eraserTool');
 //set new color to pencil in
 function setColor(evt) {
     console.log(evt);
-    var selectedColorItem = evt;
-    var selectedColor = getComputedStyle(evt).background;
+    selectedColorItem = evt;
+    selectedColor = getComputedStyle(evt).background;
     selectedColor = RGBToHex(selectedColor);
     var colorswatches = document.querySelectorAll('.swatch');
     colorswatches.forEach(swatch => {
@@ -120,30 +134,7 @@ function setColor(evt) {
     window.setTimeout(() => {
         selectedColorItem.classList.add('active');
     }, 100);
-    console.log('set color to ' + selectedColor);
-    return selectedColor;
 };
-
-//modifies global var currentColor based on if pencil or eraser is selected
-function checkTool() {
-    if (pencil.classList.contains('active')) {
-        console.log(selectedColor);
-        var currentColor = selectedColor;
-    } else if (eraser.classList.contains('active')) {
-        var currentColor = '#ffffff';
-    }
-}
-
-//driver for when you click inside the coloring page
-//driver for changing color, as well as helper functions for undo/redo
-function clickEvent(evt) {
-    const target = evt.target; //the path that was clicked on
-    if (target.classList.contains('paintable')) {
-        // checkTool(); //change global currentColor based on if pencil or eraser is selected
-        // undoRedoManage(target); //a function for changing whats stored in undo/redo when things are colored
-        target.setAttribute('fill', selectedColor); //the line that actually colors the target when its clicked on
-    }
-}
 
 //set pencil tool functionality
 pencil.addEventListener('click', function () {
