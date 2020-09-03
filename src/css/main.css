@@ -45,6 +45,7 @@ body {
     font-family: var(--font-body);
 	background-size: 500% 400%;
     min-height: 100vh;
+	max-width: 100vw;
 }
 
 .accessibility-mode {
@@ -198,6 +199,7 @@ a:hover, a:focus {
 .accessibility-button {
     position: absolute;
     left: 3rem;
+	 top: 1.5rem;
 }
 
 #image-gallery {
@@ -569,6 +571,7 @@ div.modal-button {
     #controls {
         align-items: flex-end;
     }
+	 
 
     /* Layout */
 
@@ -582,6 +585,49 @@ div.modal-button {
     .content__page {
         flex-direction: column;
     }
+	 main {
+		 padding-bottom: 2rem;
+	}
+}
+
+@media screen and (max-width: 364px) {
+	.control-bar, #controls {
+		width: 310px !important;
+	}
+}
+
+@media screen and (max-width: 510px) {
+	#controls {
+		padding: 0;
+	}
+	.accessibility-button, #image-gallery {
+		position: relative;
+		left: auto;
+		top: auto;
+	}
+	.acessibility-button {
+		margin-bottom: 1rem;
+	}
+	#image-gallery {
+		display: inherit;
+		padding-top: 0;
+		right: auto;
+		top: auto;
+	}
+	h1 {
+		font-size: 1.5rem;
+		order: 3;
+	}
+	.content__header {
+		flex-direction: column;
+		height: 9rem;
+	}
+	.content__header :nth-child(2) { 
+		order: 3; 
+	}
+	header {
+		height: 9rem;
+	}
 }
 
 /* HEX */

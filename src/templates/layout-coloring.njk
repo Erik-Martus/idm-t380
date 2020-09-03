@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, max-scale=1.0">
     <title>Coloring Book | Art by {{ image.artist }}</title>
-
     <script src="https://kit.fontawesome.com/080c06f1d6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
@@ -12,10 +11,14 @@
 <body  id="top" class="accessibility-mode-off">
 <header>
   <div class="content__header">
+    <div>
     <button class="accessibility-button" onclick="changeBackground()">
       <i class="fas fa-universal-access"></i>
     </button>
+	 </div>
+	 <div>
     <h1>Coloring Book</h1>
+	 </div>
     <div id="image-gallery">
       <h2 class="gallery-text">gallery view</h2>
       <img src="../images/icons/gallery.svg" alt="">
