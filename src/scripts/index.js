@@ -193,15 +193,15 @@ function confirmAction() {
 }
 
 // Toggle background color
-function changeBackground() {
-    var element = document.body;
-    var isColored = false;
+$('#top').toggleClass(localStorage.toggled);
 
-    if (isColored) {
-        isColored = false;
-    } else {
-        element.classList.toggle("accessibility-mode")
-        element.classList.toggle("accessibility-mode-off")
-        isColored = true;
-    }
+function changeBackground() {
+  if (localStorage.toggled != 'accessibility-mode') {
+    $('#top, button').toggleClass('accessibility-mode', true);
+    localStorage.toggled = "accessibility-mode";
+     
+  } else {
+    $('#top, button').toggleClass('accessibility-mode', false);
+    localStorage.toggled = "";
+  }
 }
