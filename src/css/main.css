@@ -20,7 +20,7 @@
     --color-dark_purple: #3C153B;
 
     /* Layout Variables */
-    --box-shadow: 0px 5px 8px 5px rgba(0,0,0,0.2);
+    --box-shadow: 0px 1px 6px 2px rgba(0,0,0,0.5);
     --transform-mv_up: translateY(-0.25rem);
     --transition-box: transform .1s ease-in, box-shadow .1s ease-in;
     --transition-btn: box-shadow .1s ease-in, background .1s ease-in, color .1s ease-in;
@@ -48,10 +48,10 @@ body {
 }
 
 .accessibility-mode {
-    background-color: gray;
+    background: gray !important;
 }
 
-.accessibility-mode-off {
+#top {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	animation: gradient 15s ease infinite;
 }
@@ -204,7 +204,7 @@ a:hover, a:focus {
     display: flex;
     position: absolute;
     align-items: center;
-    padding-top: 24px;
+    padding-top: 30px;
     right: 3em;
     top: 0;
     cursor: pointer;
@@ -266,7 +266,18 @@ a:hover, a:focus {
         padding: 1rem;
         border-radius: .5rem;
     }
-
+    .gallery-item:hover {
+        background: #FF5D73 !important;
+        transition: all .3s ease;
+    }
+    .gallery-item:hover .small {
+        color: #FFFFFF !important;
+        transition: all .3s ease;
+    }
+    .gallery-item:hover .attribution {
+        color: #FFFFFF !important;
+        transition: all .3s ease;
+    }
         .gallery-item:not(:last-of-type) {
             margin-bottom: 1rem;
         }
@@ -374,7 +385,7 @@ button, .button {
         width: 21.5rem;
         margin-bottom: 1em;
         padding: 0.625rem;
-        border-radius: 1.875rem;
+        border-radius: 22px;
 
         background: #fff;
 
@@ -392,10 +403,18 @@ button, .button {
             height: var(--tool-size);
             border-radius: 50%;
             cursor: pointer;
+            position: relative;
         }
 
-            #controls .control-bar .swatch.active {
-                border: 2px solid #000;
+            #controls .control-bar .swatch.active:after{
+                content: "";
+                position: absolute;
+                border: 2px solid #fff;
+                border-radius: 50%;
+                left: 4px;
+                top: 4px;
+                height: 2rem;
+                width: 2rem;
             }
 
             #swatch-01 {
@@ -431,6 +450,7 @@ button, .button {
 
             #tool-bar .toolItem.active {
                 box-shadow: var(--box-shadow);
+                padding: .5em;
             }
 
             .toolIcon {
