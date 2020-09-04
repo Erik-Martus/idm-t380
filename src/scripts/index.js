@@ -147,7 +147,7 @@ const eraser = document.getElementById('eraserTool');
 function setColor(evt) {
     console.log(evt);
     selectedColorItem = evt;
-    selectedColor = getComputedStyle(evt).background;
+    selectedColor = getComputedStyle(evt).backgroundColor;
     selectedColor = RGBToHex(selectedColor);
     var colorswatches = document.querySelectorAll('.swatch');
     colorswatches.forEach(swatch => {
