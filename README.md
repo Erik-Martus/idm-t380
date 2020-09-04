@@ -34,6 +34,14 @@ gulp
 
 The built site will now be available in the /build directory.
 
+Alternatively run
+
+```shell
+gulp --prod
+```
+
+To minify compiled files.
+
 ## Run locally
 
 ```shell
