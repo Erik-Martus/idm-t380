@@ -584,7 +584,7 @@ div.modal-button {
     }
 }
 
-/* ------ Tablet Styles ------ */
+/* ------ Desktop Styles ------ */
 /* min-width: 1024px */
 @media screen and (min-width: 64rem) {
     /* General */
@@ -621,33 +621,44 @@ div.modal-button {
 		padding: 0;
 	}
 	.accessibility-button, #image-gallery {
-		position: relative;
-		left: auto;
-		top: auto;
+		position: absolute;
+        top: auto;
 	}
-	.acessibility-button {
-		margin-bottom: 1rem;
+	.accessibility-button {
+        left: 2rem;
+        bottom: 1rem;
 	}
 	#image-gallery {
 		display: inherit;
 		padding-top: 0;
-		right: auto;
-		top: auto;
-	}
+		right: 2rem;
+        bottom: 1rem;
+    }
+    .page__title {
+        order: 1;
+        width: 100%;
+    }
 	h1 {
 		font-size: 1.5rem;
-		order: 3;
 	}
 	.content__header {
-		flex-direction: column;
-		height: 9rem;
-	}
-	.content__header :nth-child(2) { 
-		order: 3; 
+        display: block;
+        position: relative;
+        height: 100%;
 	}
 	header {
-		height: 9rem;
-	}
+        height: 9rem;
+    }
+    #image-gallery_modal {
+        right: unset;
+        top: 10rem;
+        width: 100%;
+        height: calc(100vh - 11rem)
+    }
+
+        .gallery-item {
+            width: 100%;
+        }
 }
 
 /* HEX */
