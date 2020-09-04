@@ -8,7 +8,7 @@ const eslint = require('gulp-eslint')
 const gulpif = require('gulp-if')
 const sourcemaps = require('gulp-sourcemaps')
 const stripDebug = require('gulp-strip-debug-arbitrary')
-const uglify = require('gulp-uglify')
+const minify = require('gulp-minify')
 
 const dir = path.join(__dirname, '../../src/scripts')
 const source = `${dir}/**/*.js`
@@ -25,11 +25,7 @@ async function scriptsTask() {
   return src(source)
     .pipe(sourcemaps.init())
     .pipe(concat('index.js'))
-    .pipe(babel({
-      presets: ['env']
-    }))
-    .pipe(gulpif(argv.prod, uglify()))
-    .pipe(gulpif(argv.prod, stripDebug()))
+    .pipe(minify())
     .pipe(sourcemaps.write('.'))
     .pipe(dest(path.join(__dirname, '../../build/scripts')))
 }

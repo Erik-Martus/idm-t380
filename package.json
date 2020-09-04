@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@babel/polyfill": "^7.11.5",
     "@jaames/iro": "^5.2.2",
     "eleventy-plugin-svg-contents": "^0.7.0",
     "http-server": "^0.12.3",
@@ -16,9 +17,9 @@
   "main": "index.js",
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
     "clean-css": "^4.2.3",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
@@ -30,6 +31,7 @@
     "gulp-eslint": "^6.0.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-if": "^3.0.0",
+    "gulp-minify": "^3.1.0",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-strip-css-comments": "^2.0.0",
