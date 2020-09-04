@@ -1,14 +1,14 @@
 window.onload = function () {
     console.log("test onload");
     var accessibilityMode = localStorage.getItem('accessibilityMode');
-    const body = document.getElementById('top')
+    const body = document.getElementById('top');
     console.log(accessibilityMode);
     if (accessibilityMode == 'true') {
         changeBackground('true');
     } else if (accessibilityMode == 'false') {
         changeBackground('false');
     }
-}
+};
 
 //initialize color picker with iro
 var colorPicker = new iro.ColorPicker("#picker", {
@@ -50,7 +50,7 @@ function openModal(e) {
         if (event.target == modal) {
             window.modal.classList.remove('active');
         }
-    }
+    };
 };
 
 //container for previous actions for undo/redo
@@ -164,7 +164,7 @@ pencil.addEventListener('click', function () {
         eraser.classList.remove('active');
         pencil.classList.add('active');
     }
-})
+});
 
 //set eraser tool functionality
 eraser.addEventListener('click', function () {
@@ -172,7 +172,7 @@ eraser.addEventListener('click', function () {
         pencil.classList.remove('active');
         eraser.classList.add('active');
     }
-})
+});
 
 //undo previous color change to svg
 function undoColor() {
@@ -212,7 +212,7 @@ function checkAccessibility() {
         console.log(`accessibility mode set to ${accessibilityMode}`);
         changeBackground('true');
     } else if (accessibilityMode == 'true') {
-        localStorage.setItem('accessibilityMode', 'false')
+        localStorage.setItem('accessibilityMode', 'false');
         console.log(`accessibility mode set to ${accessibilityMode}`);
         changeBackground('false');
     } else {
@@ -222,11 +222,11 @@ function checkAccessibility() {
 
 // Toggle body background for accessibility mode
 function changeBackground(bool) {
-    console.log('changing bg...')
+    console.log('changing bg...');
     const body = document.getElementById('top');
     if (bool == 'true') {
         body.classList.add('accessibility-mode');
     } else if (bool == 'false') {
-        body.classList.remove('accessibility-mode')
+        body.classList.remove('accessibility-mode');
     }
 }

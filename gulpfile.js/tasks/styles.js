@@ -6,6 +6,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const cleanCSS = require('gulp-clean-css')
 const concat = require('gulp-concat')
 const stripCssComments = require('gulp-strip-css-comments')
+const gulpif = require('gulp-if')
 
 const dir = path.join(__dirname, '../../src/css')
 const source = `${dir}/**/*.css`
@@ -19,8 +20,8 @@ function styles() {
       })
     )
     .pipe(concat('main.css'))
-    .pipe(stripCssComments())
-    .pipe(cleanCSS())
+    .pipe(gulpif(argv.prod, stripCssComments()))
+    .pipe(gulpif(argv.prod, cleanCSS()))
     .pipe(sourcemaps.write('.'))
     .pipe(dest(path.join(__dirname, '../../build/css')))
 }
