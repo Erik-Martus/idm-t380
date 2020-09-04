@@ -1,3 +1,15 @@
+window.onload = function () {
+    console.log("test onload");
+    var accessibilityMode = localStorage.getItem('accessibilityMode');
+    const body = document.getElementById('top')
+    console.log(accessibilityMode);
+    if (accessibilityMode == 'true') {
+        changeBackground('true');
+    } else if (accessibilityMode == 'false') {
+        changeBackground('false');
+    }
+}
+
 //initialize color picker with iro
 var colorPicker = new iro.ColorPicker("#picker", {
     // Set the size of the color picker wheel. can only be modified in js in px
@@ -192,16 +204,29 @@ function confirmAction() {
     }
 }
 
-// Toggle background color
-$('#top').toggleClass(localStorage.toggled);
+// Checks for current accessibility mode setting when button is pressed
+function checkAccessibility() {
+    var accessibilityMode = localStorage.getItem('accessibilityMode');
+    if (accessibilityMode == '' || accessibilityMode == 'false') {
+        localStorage.setItem('accessibilityMode', 'true');
+        console.log(`accessibility mode set to ${accessibilityMode}`);
+        changeBackground('true');
+    } else if (accessibilityMode == 'true') {
+        localStorage.setItem('accessibilityMode', 'false')
+        console.log(`accessibility mode set to ${accessibilityMode}`);
+        changeBackground('false');
+    } else {
+        console.log('accessibility mode is not working');
+    }
+}
 
-function changeBackground() {
-  if (localStorage.toggled != 'accessibility-mode') {
-    $('#top, button').toggleClass('accessibility-mode', true);
-    localStorage.toggled = "accessibility-mode";
-     
-  } else {
-    $('#top, button').toggleClass('accessibility-mode', false);
-    localStorage.toggled = "";
-  }
+// Toggle body background for accessibility mode
+function changeBackground(bool) {
+    console.log('changing bg...')
+    const body = document.getElementById('top');
+    if (bool == 'true') {
+        body.classList.add('accessibility-mode');
+    } else if (bool == 'false') {
+        body.classList.remove('accessibility-mode')
+    }
 }
